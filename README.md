@@ -1,97 +1,91 @@
-![image](https://github.com/user-attachments/assets/a05a8e03-62f0-45ae-a6b1-115b3000d91b)
+# Short Film Production Management System
 
-# Livewire Stisla
+Aplikasi berbasis web yang dibangun dengan Laravel untuk membantu tim produksi film pendek dalam mengelola manajemen proyek, mulai dari pre-production hingga post-production. Sistem ini memudahkan pengorganisasian scene, shot list, dan tugas kru secara kolaboratif.
 
-Project Laravel 11 dengan Livewire 3, Template Admin Stisla, dan Multi Auth menggunakan Laratrust serta Aktif/Non-aktif akun. Have Fun ^_^
+## 🚀 Fitur Utama
 
-## Prerequisites
+-   **Manajemen Scene & Shot**: Mengatur breakdown naskah ke dalam scene, shots, dan sub-shots.
+-   **Role-Based Access Control**: Hak akses yang berbeda untuk Admin, Sutradara, Kru, dll (menggunakan Laratrust).
+-   **Todo & Task Management**: Melacak tugas-tugas yang perlu diselesaikan oleh setiap departemen.
+-   **Dashboard Interaktif**: Ringkasan status proyek secara real-time.
+-   **Modern UI**: Antarmuka responsif dan bersih menggunakan TailwindCSS.
 
-Before you begin, ensure you have the following installed:
+## 🛠️ Teknologi yang Digunakan
 
-- [PHP](https://www.php.net/) (version 8.0 or higher)
-- [Composer](https://getcomposer.org/) (for managing dependencies)
-- [MySQL](https://www.mysql.com/) or any other database supported by Laravel
-- [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) (for handling frontend and assets)
-  
-## Installation Steps
+-   **Framework**: [Laravel 11](https://laravel.com)
+-   **Frontend**: [Livewire 3](https://livewire.laravel.com) + [TailwindCSS](https://tailwindcss.com)
+-   **Authorization**: [Laratrust](https://laratrust.santigarcor.me)
+-   **Database**: MySQL / SQLite (Default)
 
-Follow these steps to get your project up and running.
+## 📋 Persyaratan Sistem
 
-### 1. Clone the Repository
+Pastikan environment development Anda memenuhi persyaratan berikut:
 
-Clone the repository to your local machine:
+-   PHP >= 8.2
+-   Composer
+-   Node.js & NPM
 
-```bash
-git clone https://github.com/fahmiibrahimdevs/livewire-stisla.git
-```
+## 🔧 Cara Instalasi dan Penggunaan
 
-### 2. Install PHP Dependencies
+Ikuti langkah-langkah berikut untuk menjalankan project di komputer lokal Anda:
 
-After cloning the repository, navigate to the project directory and install the PHP dependencies using Composer:
+1. **Clone Repository**
 
-```bash
-cd livewire-stisla
-composer install
-```
+    ```bash
+    git clone https://github.com/username/short-film-project.git
+    cd short-film-project
+    ```
 
-### 3. Configure .env File
+2. **Install Dependencies**
+   Install dependensi PHP dan JavaScript:
 
-Copy the `.env.example` file to `.env`:
+    ```bash
+    composer install
+    npm install
+    ```
 
-```bash
-cp .env.example .env
-```
+3. **Konfigurasi Environment**
+   Salin file contoh konfigurasi dan buat file `.env` baru:
 
-Then, open the `.env` file and update the database connection and other environment variables based on your local configuration.
+    ```bash
+    cp .env.example .env
+    ```
 
-### 4. Generate Application Key
+    Sesuaikan konfigurasi database di dalam file `.env` jika Anda menggunakan MySQL. Jika menggunakan SQLite, Anda bisa melewati langkah ini (Laravel akan otomatis membuat file sqlite jika belum ada saat migrasi).
 
-Run the following command to generate the application key:
+4. **Generate App Key**
 
-```bash
-php artisan key:generate
-```
+    ```bash
+    php artisan key:generate
+    ```
 
-### 5. Run Database Migrations Fresh + Seed
+5. **Setup Database**
+   Jalankan migrasi dan seeder untuk mengisi database dengan data awal (roles, permissions, contoh user):
 
-Run the migration command to create the necessary database tables:
+    ```bash
+    php artisan migrate --seed
+    ```
 
-```bash
-php artisan migrate:fresh --seed
-```
+    _Note: Seeder akan membuat data role dan user default yang diperlukan untuk login._
 
-### 6. Install Frontend Dependencies
+6. **Jalankan Development Server**
+   Buka dua terminal terpisah untuk menjalankan Laravel server dan Vite (untuk compile asset):
 
-Install the frontend dependencies using npm:
+    Terminal 1 (Laravel):
 
-```bash
-npm install
-```
+    ```bash
+    php artisan serve
+    ```
 
-### 7. Build Frontend Assets
+    Terminal 2 (Vite):
 
-Once the frontend dependencies are installed, run the following command to build the assets:
+    ```bash
+    npm run dev
+    ```
 
-```bash
-npm run dev
-```
+7. **Akses Aplikasi**
+   Buka browser dan kunjungi `http://localhost:8000`.
 
-If you want to build assets for production, use:
+## 👤 Akun Demo (Default Seeder)
 
-```bash
-npm run prod
-```
-
-### 8. Run the Application
-
-Your application is now ready to run. To start the Laravel development server, use:
-
-```bash
-php artisan serve
-```
-
-The application will be available at `http://localhost:8000`.
-
-### License
-
-This project is licensed under the [MIT License](https://github.com/fahmiibrahimdevs/livewire-stisla/blob/main/LICENSE).
+Jika Anda menjalankan `php artisan migrate --seed`, sistem biasanya akan membuat akun default. Silakan cek `database/seeders/UsersSeeder.php` untuk detail kredensial login (biasanya email: `admin@app.com` atau serupa).
